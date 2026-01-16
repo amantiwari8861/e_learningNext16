@@ -21,6 +21,6 @@ async function getProducts(): Promise<Product[]> {
 
 export default async function Products() {
   const products = await getProducts();
-
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   return <ProductsClient products={products} />;
 }

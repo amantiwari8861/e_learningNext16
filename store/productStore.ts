@@ -17,8 +17,7 @@ export const useProductStore = create<ProductStore>()(
       hasHydrated: false,
 
       setProducts: (products) => set({ products }),
-      getProductById: (id) =>
-        get().products.find((p) => p.id === id),
+      getProductById: (id) => get().products.find((p) => p.id === id),
       clearProducts: () => set({ products: [] }),
     }),
     {

@@ -14,6 +14,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { useSession } from "next-auth/react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -55,6 +56,9 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function NavigationMenuDemo() {
   const isMobile = useIsMobile()
+  const { data: session, status } = useSession();
+
+  if (status === "loading") return <p>Loading user...</p>;
 
   return (
     <NavigationMenu viewport={isMobile}>
@@ -142,6 +146,7 @@ export function NavigationMenuDemo() {
                 </NavigationMenuLink>
               </li>
             </ul>
+            <p>Welcome {session?.user?.email}</p>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="hidden md:block">
