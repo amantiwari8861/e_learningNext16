@@ -20,6 +20,9 @@ export default function ProductsClient({
     if (storedProducts.length === 0) {
       setProducts(products);
     }
+    if (products.length > 0) {
+      setProducts(products);
+    }
 
     console.log("storedProducts after in useeffect:", storedProducts);
     console.log("products after in useeffect:", products);
