@@ -12,7 +12,7 @@ const API_URL =
 async function getProducts(): Promise<Product[]> {
   const res = await fetch(API_URL
     // ,{next: { revalidate: 60 },}
-    ,{ cache: "no-store" }
+    , { cache: "no-store" }
   );
 
   if (!res.ok) {
@@ -25,6 +25,8 @@ async function getProducts(): Promise<Product[]> {
 export default async function Products() {
   const products = await getProducts();
   log("Fetched products:", products);
+  console.log("API_URL used:", API_URL);
+
   // Simulate delay for testing loading states
   // await new Promise((resolve) => setTimeout(resolve, 3000));
   return <ProductsClient products={products} />;
