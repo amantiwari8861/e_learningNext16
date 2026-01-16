@@ -14,10 +14,15 @@ export default function ProductsClient({
   const storedProducts = useProductStore((s) => s.products);
 
   useEffect(() => {
+    console.log("storedProducts before in useeffect:", storedProducts);
+    console.log("products before in useeffect:", products);
     // ✅ prevent overwriting persisted state
     if (storedProducts.length === 0) {
       setProducts(products);
     }
+
+    console.log("storedProducts after in useeffect:", storedProducts);
+    console.log("products after in useeffect:", products);
   }, [products, setProducts, storedProducts.length]);
 
   console.log("storedProducts:", storedProducts);
