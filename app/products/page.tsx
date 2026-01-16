@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 // app/products/page.tsx (SERVER COMPONENT)
 import Product, { ProductSchema } from "@/model/Product";
 import ProductsClient from "./ProductClient";
