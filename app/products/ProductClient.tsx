@@ -20,10 +20,10 @@ export default function ProductsClient({
     }
   }, [products, setProducts, storedProducts.length]);
 
+  console.log("storedProducts:", storedProducts);
+  console.log("products:", products);
   return (
     <section className="grid grid-cols-4 gap-4">
-      {console.log("storedProducts:", storedProducts)}
-      {console.log("products:", products)}
 
       {storedProducts.map((p) => (
         <ProductCard key={p.id} product={p} />
