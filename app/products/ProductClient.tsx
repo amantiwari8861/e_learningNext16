@@ -32,7 +32,6 @@ export default function ProductsClient({
   console.log("products:", products);
   return (
     <section className="grid grid-cols-4 gap-4">
-
       {storedProducts.map((p) => (
         <ProductCard key={p.id} product={p} />
       ))}

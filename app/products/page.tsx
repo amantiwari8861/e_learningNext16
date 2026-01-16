@@ -9,11 +9,11 @@ const API_URL =
   "http://localhost:5000/products";
 
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch(API_URL, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(API_URL
+    // ,{next: { revalidate: 60 },}
+  );
 
-   if (!res.ok) {
+  if (!res.ok) {
     return []; // ⬅ DO NOT throw Error during SSR
   }
   const data = await res.json();
