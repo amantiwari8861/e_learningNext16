@@ -10,17 +10,20 @@ const API_URL =
   "http://localhost:5000/products";
 
 async function getProducts(): Promise<Product[]> {
-  const res = await fetch(API_URL
-    // ,{next: { revalidate: 60 },}
-    , { cache: "no-store" }
-  );
+  const res = await fetch(API_URL, { cache: "no-store" });
 
-  if (!res.ok) {
-    return []; // ⬅ DO NOT throw Error during SSR
-  }
-  const data = await res.json();
+  console.log("STATUS:", res.status);
+  console.log("HEADERS:", Object.fromEntries(res.headers));
+
+  const text = await res.text();
+  console.log("RAW RESPONSE:", text.slice(0, 200));
+
+  if (!res.ok) return [];
+
+  const data = JSON.parse(text);
   return ProductSchema.array().parse(data);
 }
+
 
 export default async function Products() {
   const products = await getProducts();
