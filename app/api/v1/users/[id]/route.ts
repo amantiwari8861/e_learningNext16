@@ -1,29 +1,24 @@
 import { users } from "@/db/users";
-import { NextResponse } from "next/server";
-
-interface Params {
-    params: {
-        id: string;
-    };
-}
+import { NextRequest, NextResponse } from "next/server";
 
 /**
  * GET /api/users/:id
  */
 export async function GET(
-    request: Request,
-    { params }: Params
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-    const id = Number(params.id);
+  const { id } = await params;
+  const userId = Number(id);
 
-    const user = users.find((u) => u.id === id);
+  const user = users.find((u) => u.id === userId);
 
-    if (!user) {
-        return NextResponse.json(
-            { message: "User not found" },
-            { status: 404 }
-        );
-    }
+  if (!user) {
+    return NextResponse.json(
+      { message: "User not found" },
+      { status: 404 }
+    );
+  }
 
-    return NextResponse.json(user);
+  return NextResponse.json(user);
 }
