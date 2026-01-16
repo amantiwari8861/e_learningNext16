@@ -13,9 +13,10 @@ async function getProducts(): Promise<Product[]> {
     next: { revalidate: 60 },
   });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
+   if (!res.ok) {
+    return []; // ⬅ DO NOT throw Error during SSR
   }
+
 
   const data = await res.json();
   return ProductSchema.array().parse(data);
