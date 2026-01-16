@@ -16,8 +16,6 @@ async function getProducts(): Promise<Product[]> {
    if (!res.ok) {
     return []; // ⬅ DO NOT throw Error during SSR
   }
-
-
   const data = await res.json();
   return ProductSchema.array().parse(data);
 }
