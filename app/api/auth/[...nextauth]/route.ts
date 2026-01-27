@@ -15,11 +15,11 @@ export const authOptions: NextAuthOptions = {
 
         const { email, password } = credentials;
 
-        if (email === "admin@demo.com" && password === "admin123") {
+        if (email === "amantiwari8861@gmail.com" && password === "123456") {
           return {
             id: "1",
             name: "Admin",
-            email: "admin@demo.com",
+            email: "amantiwari8861@gmail.com",
             role: "ROLE_ADMIN",
           };
         }
